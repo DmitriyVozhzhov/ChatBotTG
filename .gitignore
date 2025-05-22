@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Якщо використовуєш VSCode
+.vscode/
+
+# Файли з ключами чи конфіденційною інформацією
+credentials.json
