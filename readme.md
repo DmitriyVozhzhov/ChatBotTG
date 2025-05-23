@@ -34,8 +34,9 @@ git clone [https://github.com/your-username/pidaras-bot.git](https://github.com/
 cd pidaras-bot
 ``` 
 ### 2. Встановлення залежностей
+```bash
 npm install
-
+``` 
 ### 3. Створення .env файлу
 Створіть файл .env у корені проекту та додайте свої змінні:
 ```
