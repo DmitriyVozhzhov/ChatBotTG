@@ -107,7 +107,12 @@ async function getPersonOfTheMoment(chatId) {
   const status = await getStatus(chatId);
   const currentCount = participants.length;
 
-  if (currentCount === status.participantCount && status.person) {
+  const today = new Date().toISOString().slice(0, 10);
+  const lastPickDay = (status.timestamp || '').slice(0, 10);
+  const isNewDay = today !== lastPickDay;
+  const isCountChanged = currentCount !== status.participantCount;
+
+  if (!isNewDay && !isCountChanged && status.person) {
     return {
       message: `👀 Підарас дня вже обраний раніше: *${status.person}*! Додайте нового підараса або дочекайтесь нового дня`,
       person: status.person,
