@@ -11,6 +11,7 @@ bot.setMyCommands([
   { command: '/join', description: 'Додатися до списку підарасів' },
   { command: '/person', description: 'Отримати підараса дня' },
   { command: '/all', description: 'Показати усіх підарасів' },
+  { command: '/whoami', description: 'Дізнатись який я підарас' }
 ]);
 
 const auth = new google.auth.GoogleAuth({
@@ -192,6 +193,13 @@ bot.onText(/\/all/i, async (msg) => {
   const chatId = msg.chat.id.toString();
   const allUsersList = await getAllParticipants(chatId);
   await bot.sendMessage(chatId, `📋 Список усіх підарасів:\n\n${allUsersList}`);
+});
+
+// Команда /whoami
+bot.onText(/\/whoami/, async (msg) => {
+  const chatId = msg.chat.id;
+  const username = msg.from.first_name + (msg.from.last_name ? ' ' + msg.from.last_name : '');
+  await bot.sendMessage(chatId, `🧐 ${username}, ти — любопитний підарас 😏`);
 });
 
 // Обробка кнопок
